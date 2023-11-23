@@ -13,6 +13,9 @@ const newInput = document.querySelector('#new-input');
 const inputRemoveNth = document.querySelector('#input-remove-nth');
 const newBlocks = document.querySelector('.new-blocks');
 
+
+
+
 inputLog.addEventListener('click', () => {
   console.log(input.value);
 });
@@ -51,6 +54,10 @@ inputColor.addEventListener('click', () => {
 
 let newArray = [];
 inputCreate.addEventListener('click', () => {
+
+ if(input.value.trim().length === 0) {
+  alert('input is not filled...')
+ } else {
   let newDiv = document.createElement('div');
   newDiv.className = 'newDiv';
   newDiv.textContent = input.value;
@@ -59,15 +66,32 @@ inputCreate.addEventListener('click', () => {
   newArray.push(newDiv);
   newDiv.id = newArray.length;
   console.log(newArray);
+ }
+
 });
 
 inputRemove.addEventListener('click', () => {
-  newBlocks.lastChild.remove();
-  newArray.pop();
-  console.log(newArray);
+
+  if(newArray.length === 0) {
+    inputRemove.disabled
+  } else {
+    newBlocks.lastChild.remove();
+    newArray.pop();
+    console.log(newArray);
+  }
+
 });
 
 inputRemoveNth.addEventListener('click', () => {
-  const count = newInput.value
-  newArray[count].remove();
+
+  if(newInput.value === '') {
+    alert('input is not filled...')
+  } else {
+    const count = newInput.value
+    newArray[count].remove();
+    newInput.value = '';
+  }
 })
+
+
+
