@@ -88,8 +88,11 @@ inputRemoveNth.addEventListener('click', () => {
     alert('input is not filled...')
   } else {
     const count = newInput.value
+    console.log(count);
     newArray[count].remove();
+    newArray.splice(count, 1); 
     newInput.value = '';
+    console.log(newArray);
   }
 })
 
