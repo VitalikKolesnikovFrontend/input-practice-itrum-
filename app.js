@@ -32,8 +32,10 @@ form.addEventListener('submit', (event) => {
 inputBlock.addEventListener('click', () => {
   if (input.disabled === false) {
     input.disabled = true;
+    inputBlock.textContent = 'on input'
   } else {
     input.disabled = false;
+    inputBlock.textContent = 'block input'
   }
 });
 
@@ -79,24 +81,41 @@ inputRemove.addEventListener('click', () => {
   } else {
     newBlocks.lastChild.remove();
     newArray.pop();
-    console.log(newArray);
+    
   }
 
 });
 
 inputRemoveNth.addEventListener('click', () => {
 
-  if(newInput.value === '') {
-    alert('input is not filled...')
-  } else {
-    const count = +newInput.value - 1
-    console.log(count);
-    newArray[count].remove();
-    newArray.splice(count, 1); 
-    newInput.value = '';
-    console.log(newArray);
+  try {
+
+    if(newInput.value === '') {
+      
+      alert('input is not filled...')
+    } else {
+      const count = +newInput.value - 1
+      console.log(count);
+      newArray[count].remove();
+      newArray.splice(count, 1); 
+      newInput.value = '';
+      console.log(newArray);
+      
+      // if (newInput.value === newArray[count]) {
+      //   return
+      // } else {
+      //   alert('asdad')
+      // }
+    }
+  } catch(e) {
+    alert('Такого инпута нет!')
   }
+
+
 })
 
+//window.onerror = function() {
+//  alert('такого блока нет!')
+//}
 
 
