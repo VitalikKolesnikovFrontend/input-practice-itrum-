@@ -40,15 +40,17 @@ inputBlock.addEventListener('click', () => {
 inputHide.addEventListener('click', () => {
   if (form.style.display === '') {
     form.style.display = 'none';
+    inputHide.textContent = 'show input'
   } else {
     form.style.display = '';
+    inputHide.textContent = 'hide input'
   }
 });
 
 inputColor.addEventListener('click', () => {
   const arrColor = ['black', 'red', 'blue', 'green'];
   const randomColor = Math.floor(Math.random() * arrColor.length);
-  input.style.backgroundColor = arrColor[randomColor];
+  input.style.color = arrColor[randomColor];
   console.log(input.style.backgroundColor);
 });
 
@@ -87,7 +89,7 @@ inputRemoveNth.addEventListener('click', () => {
   if(newInput.value === '') {
     alert('input is not filled...')
   } else {
-    const count = newInput.value
+    const count = +newInput.value - 1
     console.log(count);
     newArray[count].remove();
     newArray.splice(count, 1); 
